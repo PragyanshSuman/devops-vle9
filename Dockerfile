@@ -1,7 +1,7 @@
 FROM node:18-alpine
-RUN adduser -D appuser
-USER appuser
 WORKDIR /app
+RUN adduser -D appuser && chown -R appuser:appuser /app
+USER appuser
 COPY package*.json ./
 RUN npm install --production
 COPY . .
